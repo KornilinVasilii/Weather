@@ -63,12 +63,20 @@ async function getFind() {
   let positionIp = await request.json()
   city.style.display = 'block'
   temp.style.display = 'block'
-  city.innerHTML = `${positionIp.weather[0].main} in ${positionIp.name}`
-  temp.innerHTML = `${(+positionIp.main.temp - 273).toFixed(1)}` + "℃"
-  input.style.display = 'none'
-  find.style.display = 'none'
-  btn.style.display = 'block'
-  
+  try {
+    city.innerHTML = `${positionIp.weather[0].main} in ${positionIp.name}`
+    temp.innerHTML = `${(+positionIp.main.temp - 273).toFixed(1)}` + "℃"
+    input.style.display = 'none'
+    find.style.display = 'none'
+    btn.style.display = 'inline-block'
+    input.value = ''
+  } catch (error) {
+    temp.style.display = 'none'
+    btn.style.display = 'none'
+    input.style.display = 'none'
+    find.style.display = 'none'
+    city.innerText = 'Ooops. Something went wrong.'
+  } 
 }
 
 
