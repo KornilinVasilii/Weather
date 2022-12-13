@@ -3,7 +3,12 @@ let city = document.querySelector('.city')
 let temp = document.querySelector('.temp')
 let input = document.querySelector('input')
 let find = document.querySelector('.btn-find')
+let tryAgainBtn = document.querySelector('.tryAgain')
+let errorTitle = document.querySelector('.errorTitle')
+let errorSubtitle = document.querySelector('.errorSubtitle')
+
 let API_KEY = "c9fd997cfd25cafa05d85908fe33d9de"
+
 
 
 getLocation()
@@ -59,7 +64,7 @@ getIP()
 
 
 async function getFind() { 
-  let request = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${API_KEY}`)
+  let request = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input.value.trim()}&appid=${API_KEY}`)
   let positionIp = await request.json()
   city.style.display = 'block'
   temp.style.display = 'block'
@@ -75,10 +80,23 @@ async function getFind() {
     btn.style.display = 'none'
     input.style.display = 'none'
     find.style.display = 'none'
-    city.innerText = 'Ooops. Something went wrong.'
+    city.style.display = 'none'
+    tryAgainBtn.style.display = 'inline-block'
+    errorTitle.style.display = 'block'
+    errorSubtitle.style.display = 'block'
   } 
+}
+function errorInfo() { 
+   input.style.display = 'block'
+   find.style.display = 'block'
+   city.style.display = 'none'
+   tryAgainBtn.style.display = 'none'
+   errorTitle.style.display = 'none'
+   errorSubtitle.style.display = 'none'
+   
 }
 
 
+tryAgainBtn.addEventListener('click',errorInfo)
 find.addEventListener('click', getFind)
 btn.addEventListener('click', searchCity)

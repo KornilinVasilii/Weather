@@ -125,3 +125,31 @@ input:focus::placeholder {
   line-height: 36px;
   display: none;
 }
+
+.errorTitle{
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 36px;
+  color: #fff;
+  display: none;
+}
+.errorSubtitle {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #fff;
+  opacity: 75%;
+  display: none;
+}
+
+.tryAgain {
+    padding: 6px 26px;
+    border-radius: 5px;
+    border: none;
+    color: #4C01E0;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 36px;
+    margin-top: 63px;
+    display: none;
+}
